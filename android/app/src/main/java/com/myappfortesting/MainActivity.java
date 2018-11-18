@@ -1,6 +1,11 @@
 package com.myappfortesting;
 
+import android.os.Bundle;
+
 import com.facebook.react.ReactActivity;
+import com.facebook.react.ReactInstanceManager;
+import com.facebook.react.ReactRootView;
+import com.microsoft.codepush.react.CodePush;
 
 public class MainActivity extends ReactActivity {
 
