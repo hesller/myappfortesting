@@ -32,7 +32,7 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
             new RNAnalyticsPackage(MainApplication.this, getResources().getString(R.string.mobileCenterAnalytics_whenToEnableAnalytics)),
-            new CodePush(null, getApplicationContext(), BuildConfig.DEBUG)
+            new CodePush("a823PWaAZVVGMwhE71iMqDhyzVlZ0e8f4a9f-1405-45c4-9c49-33ac84907313", getApplicationContext(), BuildConfig.DEBUG)
       );
     }
 
