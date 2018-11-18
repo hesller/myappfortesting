@@ -24,44 +24,47 @@ const codePushOptions = {
   checkFrequency: codePush.CheckFrequency.ON_APP_RESUME
 };
 
-sendEvent() {
-  Analytics.trackEvent('this is a sendEvent', {
-    prop1: new Date().getSeconds()
-  })
-}
 
-nativeCrash() {
-  Crashes.generateTestCrash();
-}
-
-jsCrash() {
-  this.func1();
-}
-
-func1() {
-  throw new Error('my uncaught javascript error');
-}
-
-constructor(props) {
-  super(props);
-  this.state = {logs: []};
-}
-
-codepushSync() {
-  this.setState({ logs: ['Started at ' + new Date().getTime()]})
-  CodePush.sync({
-    updateDialog: true,
-    installMode: CodePush.installMode.IMMEDIATE
-  }, (status) =>{
-    if (status === CodePush.SyncStatus[key]) {
-      this.setState(prevState => ({ logs: [...prevState.logs, key.replace(/_/g, ' ')] }));
-      break;
-    }
-  })
-}
 
 type Props = {};
 class App extends Component<Props> {
+
+  sendEvent() {
+    Analytics.trackEvent('this is a sendEvent', {
+      prop1: new Date().getSeconds()
+    })
+  }
+  
+  nativeCrash() {
+    Crashes.generateTestCrash();
+  }
+  
+  jsCrash() {
+    this.func1();
+  }
+  
+  func1() {
+    throw new Error('my uncaught javascript error');
+  }
+  
+  constructor(props) {
+    super(props);
+    this.state = {logs: []};
+  }
+  
+  codepushSync() {
+    this.setState({ logs: ['Started at ' + new Date().getTime()]})
+    CodePush.sync({
+      updateDialog: true,
+      installMode: CodePush.installMode.IMMEDIATE
+    }, (status) =>{
+      if (status === CodePush.SyncStatus[key]) {
+        this.setState(prevState => ({ logs: [...prevState.logs, key.replace(/_/g, ' ')] }));
+        break;
+      }
+    })
+  }
+
   render() {
     return (
       <View style={styles.container}>
