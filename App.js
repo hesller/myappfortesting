@@ -60,7 +60,6 @@ class App extends Component<Props> {
     }, (status) =>{
       if (status === CodePush.SyncStatus[key]) {
         this.setState(prevState => ({ logs: [...prevState.logs, key.replace(/_/g, ' ')] }));
-        break;
       }
     })
   }
