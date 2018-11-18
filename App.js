@@ -19,10 +19,12 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
-const codePushOptions = {
-  installMode: CodePush.InstallMode.ON_NEXT_RESTART,
-  checkFrequency: CodePush.CheckFrequency.ON_APP_RESUME
-};
+let codePushOptions = { 
+  checkFrequency: codePush.CheckFrequency.ON_APP_RESUME };
+  codePush.sync({
+  updateDialog: true,
+  installMode: codePush.InstallMode.IMMEDIATE
+});
 
 
 
@@ -67,7 +69,7 @@ class App extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>this is a code push text</Text>
+        <Text style={styles.welcome}>Sunday was changed</Text>
         <Text style={styles.welcome}>{JSON.stringify(this.state.logs)}</Text>
         <Button 
           title='send events'
